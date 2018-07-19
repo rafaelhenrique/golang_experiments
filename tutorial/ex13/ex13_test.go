@@ -1,5 +1,5 @@
 // Ex1.3 make benchmark between examples
-package ex13
+package main
 
 import (
 	"fmt"
