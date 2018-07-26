@@ -3,4 +3,5 @@ Golang experiments for noobs like me :D
 
 # References
 
-- "The Go Programming Language": https://github.com/adonovan/gopl.io/
+- https://gist.github.com/rafaelhenrique/902e76c3de57d26430795744f4fead98
+
