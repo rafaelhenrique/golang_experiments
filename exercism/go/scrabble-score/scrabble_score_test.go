@@ -17,3 +17,19 @@ func BenchmarkScore(b *testing.B) {
 		}
 	}
 }
+
+func TestScoreWithMap(t *testing.T) {
+	for _, test := range scrabbleScoreTests {
+		if actual := ScoreWithMap(test.input); actual != test.expected {
+			t.Errorf("Score(%q) expected %d, Actual %d", test.input, test.expected, actual)
+		}
+	}
+}
+
+func BenchmarkScoreWithMap(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range scrabbleScoreTests {
+			ScoreWithMap(test.input)
+		}
+	}
+}
