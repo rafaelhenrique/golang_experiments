@@ -75,3 +75,17 @@ func IsIsogram(word string) bool {
 	}
 	return true
 }
+
+// IsIsogramFastest is an fastest version from isogram function
+// Reference: https://exercism.io/tracks/go/exercises/isogram/solutions/2e0f7084226541b5af92d9895d1a9fa3
+func IsIsogramFastest(s string) bool {
+	s = strings.ToLower(s)
+
+	for i, c := range s {
+		if unicode.IsLetter(c) && strings.ContainsRune(s[i+1:], c) {
+			return false
+		}
+	}
+
+	return true
+}
