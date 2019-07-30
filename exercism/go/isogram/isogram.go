@@ -39,8 +39,8 @@ func IsIsogramV2(word string) (isIsogram bool) {
 	return true
 }
 
-// IsIsogram receive a word and return true if word is a isogram and false if it is not
-func IsIsogram(word string) (isIsogram bool) {
+// IsIsogramV3 receive a word and return true if word is a isogram and false if it is not
+func IsIsogramV3(word string) (isIsogram bool) {
 	for _, rune := range word {
 		if unicode.IsLetter(rune) == false {
 			continue
@@ -52,6 +52,26 @@ func IsIsogram(word string) (isIsogram bool) {
 		if count > 1 {
 			return false
 		}
+	}
+	return true
+}
+
+// IsIsogram receive a word and return true if word is a isogram and false if it is not
+func IsIsogram(word string) bool {
+	if word == "" {
+		return true
+	}
+
+	var seen = map[rune]bool{}
+	for _, r := range word {
+		if unicode.IsLetter(r) == false {
+			continue
+		}
+		lowerRune := unicode.ToLower(r)
+		if seen[lowerRune] == true {
+			return false
+		}
+		seen[lowerRune] = true
 	}
 	return true
 }
