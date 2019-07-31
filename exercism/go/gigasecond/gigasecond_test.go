@@ -30,6 +30,22 @@ want %s`, tc.description, in, got, want)
 	t.Log("Tested", len(addCases), "cases.")
 }
 
+func TestAddGigasecondV1(t *testing.T) {
+	for _, tc := range addCases {
+		in := parse(tc.in, t)
+		want := parse(tc.want, t)
+		got := AddGigasecondV1(in)
+		if !got.Equal(want) {
+			t.Fatalf(`FAIL: %s
+AddGigasecond(%s)
+   = %s
+want %s`, tc.description, in, got, want)
+		}
+		t.Log("PASS:", tc.description)
+	}
+	t.Log("Tested", len(addCases), "cases.")
+}
+
 func parse(s string, t *testing.T) time.Time {
 	tt, err := time.Parse(fmtDT, s) // try full date time format first
 	if err != nil {
@@ -54,5 +70,11 @@ func parse(s string, t *testing.T) time.Time {
 func BenchmarkAddGigasecond(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		AddGigasecond(time.Time{})
+	}
+}
+
+func BenchmarkAddGigasecondV1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		AddGigasecondV1(time.Time{})
 	}
 }
