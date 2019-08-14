@@ -1,18 +1,16 @@
 package diffsquares
 
+// Reference about calculation https://brilliant.org/wiki/sum-of-n-n2-or-n3/
+
 // SquareOfSum calculates square of the sum of the first N natural numbers
 func SquareOfSum(n int) (squareOfSum int) {
-	for i := 1; i <= n; i++ {
-		squareOfSum += i
-	}
+	squareOfSum = (n * (n + 1)) / 2
 	return squareOfSum * squareOfSum
 }
 
 // SumOfSquares calculates sum of the squares of the first N natural numbers
 func SumOfSquares(n int) (sumOfSquares int) {
-	for i := 1; i <= n; i++ {
-		sumOfSquares += i * i
-	}
+	sumOfSquares = (n * (n + 1) * (2*n + 1)) / 6
 	return sumOfSquares
 }
 
